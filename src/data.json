@@ -1,0 +1,109 @@
+[
+    {
+<<<<<<< HEAD
+        "id": "dfghhqghh1",
+        "imageUrl": "https://i.imgur.com/Pipkn7L.png",
+        "name": "Secret box",
+=======
+        "id": 1,
+        "imageUrl": "https://i.imgur.com/MXqwGgm.png",
+        "name": "Thing",
+>>>>>>> e27aefed1ede6b09838ceafc1c4d430ae609a035
+        "count": 4,
+        "size": {
+            "width": 256,
+            "height": 256
+        },
+        "weight": "1kg",
+        "comments": [
+            {
+                "id": 1,
+                "productId": 1,
+<<<<<<< HEAD
+                "description": "Strange box",
+=======
+                "description": "Some other comment",
+>>>>>>> e27aefed1ede6b09838ceafc1c4d430ae609a035
+                "date": "22.00 14.09.1999"
+            },
+            {
+                "id": 1,
+                "productId": 2,
+<<<<<<< HEAD
+                "description": "Looks very secret",
+=======
+                "description": "Comment..",
+>>>>>>> e27aefed1ede6b09838ceafc1c4d430ae609a035
+                "date": "22.01 14.09.1999"
+            }
+        ]
+    },
+    {
+<<<<<<< HEAD
+        "id": "23448132yf",
+        "imageUrl": "https://i.imgur.com/qKk2UX7.png",
+        "name": "Comfy hat",
+=======
+        "id": 2,
+        "imageUrl": "https://i.imgur.com/MXqwGgm.png",
+        "name": "Something",
+>>>>>>> e27aefed1ede6b09838ceafc1c4d430ae609a035
+        "count": 4,
+        "size": {
+            "width": 257,
+            "height": 180
+        },
+        "weight": "50kg",
+        "comments": [
+            {
+                "id": 2,
+                "productId": 1,
+<<<<<<< HEAD
+                "description": "Cool hat",
+=======
+                "description": "comment1....",
+>>>>>>> e27aefed1ede6b09838ceafc1c4d430ae609a035
+                "date": "13.00 15.12.2016"
+            },
+            {
+                "id": 2,
+                "productId": 2,
+<<<<<<< HEAD
+                "description": "Suits me very well",
+=======
+                "description": "comment2",
+>>>>>>> e27aefed1ede6b09838ceafc1c4d430ae609a035
+                "date": "6.56 19.10.2016"
+            }
+        ]
+    },
+    {
+<<<<<<< HEAD
+        "id": "1234afdasf",
+        "imageUrl": "https://i.imgur.com/ErrrzIe.png",
+        "name": "Magic ball",
+=======
+        "id": 3,
+        "imageUrl": "https://i.imgur.com/MXqwGgm.png",
+        "name": "Object",
+>>>>>>> e27aefed1ede6b09838ceafc1c4d430ae609a035
+        "count": 15,
+        "size": {
+            "width": 322,
+            "height": 257
+        },
+        "weight": "500g",
+        "comments": [
+            {
+                "id": 3,
+                "productId": 1,
+<<<<<<< HEAD
+                "description": "Lovely ball, very magic and round as expected",
+=======
+                "description": "cool thing!!!",
+>>>>>>> e27aefed1ede6b09838ceafc1c4d430ae609a035
+                "date": "18.00 15.12.2010"
+            }
+        ]
+    }
+]
