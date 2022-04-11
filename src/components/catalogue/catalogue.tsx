@@ -1,36 +1,38 @@
 import { Grid, Box, List, CircularProgress } from "@mui/material"
 import { Button, Select, SelectChangeEvent, MenuItem, InputLabel } from "@mui/material"
-import type { ChangeEvent } from "react"
-import type { ListState, RootState } from "../../reducers"
-import { useEffect } from "react"
+
+import { ChangeEvent, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchItems, itemsSort, itemsSortChange } from "../../actions"
-import { SortOptions } from "../../utils/sort"
+
 import { Item } from "./item"
 
+import { ListState, RootState } from "../../reducers"
+import { fetchItems, itemsSort, itemsSortChange } from "../../actions"
+import { SortOptions } from "../../utils/sort"
+
 export const Catalogue = () => {
-    const { items, loading, error, sort } = useSelector<RootState, ListState>(state => state.list)
+  const { items, loading, error, sort } = useSelector<RootState, ListState>(state => state.list)
     
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-    useEffect(() => fetchItems(dispatch), [dispatch])
-    useEffect(() => {
-        dispatch(itemsSort(sort))
-    }, [dispatch, sort])
+  useEffect(() => fetchItems(dispatch), [dispatch])
+  useEffect(() => {
+    dispatch(itemsSort(sort))
+  }, [dispatch, sort])
 
-    const handleChangeSort = (event: SelectChangeEvent) => {
-        dispatch(itemsSortChange(event.target.value))
-    }
+  const handleChangeSort = (event: SelectChangeEvent) => {
+    dispatch(itemsSortChange(event.target.value))
+  }
 
-    const handleConfirmAdd = () => {
-        navigate("./add")
-    }
+  const handleConfirmAdd = () => {
+    navigate("./add")
+  }
     
-    const handleConfirmRemove = (id: string) => {
-        navigate(`./remove/${id}`)
-    }
+  const handleConfirmRemove = (id: string) => {
+    navigate(`./remove/${id}`)
+  }
 
     if (loading) {
         return <CircularProgress/>
@@ -40,7 +42,7 @@ export const Catalogue = () => {
     }
     return (
       <Box padding="20px">
-        <Box display="flex" sx={optionsContainerStyle}>
+        <Box sx={optionsContainerStyle}>
           <Select value={sort} onChange={handleChangeSort}>
             {Object.keys(SortOptions).map((key, i) => <MenuItem key={i} value={key} children={key}/>)}
           </Select>
