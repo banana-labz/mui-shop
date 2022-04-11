@@ -4,7 +4,7 @@ import { Modal } from "./modal"
 
 export const withModal = <BaseProps extends ModalProps>(Component: ComponentType<BaseProps>) => (
     (props: BaseProps) => (
-        <Modal close={props.close}>
+        <Modal>
             <Component {...props}/>
         </Modal>
     )

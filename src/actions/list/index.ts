@@ -1,41 +1,21 @@
-import type { Dispatch } from "react"
-import type { AFetch } from "./fetch"
-import type { AItems } from "./items"
-import { Service } from "../../services/shop-service"
-import { 
-    AFetchType,
-    itemsRequest,
-    itemsSuccess,
-    itemsError
-} from "./fetch"
-import { 
-    AItemsType,
-    itemsSortChange,
-    itemsSort,
-    itemsAdd,
-    itemsRemove,
-    itemsEdit
-} from "./items"
+import { Dispatch } from "react"
 
+import { AFetch, itemsRequest, itemsSuccess, itemsError } from "./fetch"
+import { AItems, itemsSort } from "./items"
+
+import api from "../../services/shop-service"
+
+export { AFetchType } from "./fetch"
+export { AItemsType } from "./items"
 export type AList = AItems | AFetch
 
-const fetchItems = (dispatch: Dispatch<AList>) => {
-    dispatch(itemsRequest())
-    Service.getItems()
-        .then(data => {
-            dispatch(itemsSuccess(data))
-            dispatch(itemsSort())
-        })
-        .catch(err => dispatch(itemsError(err)))
-}
-
-export { 
-    AItemsType, 
-    AFetchType,
-    fetchItems,
-    itemsSortChange,
-    itemsSort,
-    itemsAdd,
-    itemsRemove,
-    itemsEdit
+export { itemsSortChange, itemsAdd, itemsRemove, itemsEdit, itemsSort } from "./items"
+export const fetchItems = (dispatch: Dispatch<AList>) => {
+  dispatch(itemsRequest())
+  api.getAllItems()
+    .then(data => {
+      dispatch(itemsSuccess(data))
+      dispatch(itemsSort())
+    })
+    .catch(err => dispatch(itemsError(err)))
 }

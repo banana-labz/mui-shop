@@ -1,27 +1,47 @@
-import type { ProductData } from "../types"
+import { ProductData } from '../types'
 
-import data from "../data.json"
+// using fakestoreapi.com
 
-const STORAGE_SECTION = "items"
-
-if (!localStorage.getItem(STORAGE_SECTION)) {
-    localStorage.setItem(STORAGE_SECTION, JSON.stringify(data))
+interface FakeStoreProductData {
+  id: number,
+  category: string,
+  description: string,
+  image: string,
+  title: string,
+  price: number,
+  rating: { rate: number, count: number },
 }
 
 class ShopService {
-    public getItems = (): Promise<ProductData[]> => (
-        new Promise((resolve, reject) => {
-            try {
-                const json = localStorage.getItem(STORAGE_SECTION)
-                if (json) {
-                    resolve(JSON.parse(json))
-                }
-            }
-            catch (err) {
-                reject(new Error("ERROR"))
-            }
-        })
-    )
+  private base = "https://fakestoreapi.com"
+
+  private handleError = (response: Response): Error => (
+    new Error(`Could not fetch, recieved ${response.status}`)
+  )
+
+  private transformProduct = ({ id, title, price, rating, image }: FakeStoreProductData): ProductData => ({
+    id: id.toString(),
+    name: title,
+    imageUrl: image,
+    rating: rating.rate,
+    price
+  })
+
+  public getAllItems = async () => fetch(`${this.base}/products`)
+    .then(response => response.json())
+    .then(response => response.map(this.transformProduct))
+    .catch(this.handleError)
+
+  public getItem = async (id: number) => fetch(`${this.base}/products/${id}`)
+    .then(response => response.json())
+    .then(this.transformProduct)
+    .catch(this.handleError)
 }
 
-export const Service = new ShopService()
+const service = new ShopService()
+
+// TEST
+// service.getAllItems().then(console.log)
+// service.getItem(18).then(console.log)
+
+export default service
