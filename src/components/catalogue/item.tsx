@@ -3,22 +3,32 @@ import { Button, Typography, Card, CardMedia, CardContent, CardActions } from "@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
 import { ProductData } from "../../types"
+import { useNavigate } from "react-router"
 
-export const Item = ({ imageUrl, name, price }: ProductData) => (
-  <Card sx={style.card}>
-    <CardMedia image={imageUrl} component="img" sx={style.media}/>
-    <CardContent sx={style.content}>  
-      <Typography>{name}</Typography>
-      <Typography variant="h5">${price}</Typography>
-    </CardContent>
-    <CardActions sx={style.actions}>
-      <Button startIcon={<ShoppingCartIcon/>} color="info" variant="outlined" sx={style.button}>
-        buy
-      </Button>
+export const Item = ({ id, imageUrl, name, price }: ProductData) => {
+  const navigate = useNavigate()
+  
+  const handleClickMedia = () => {
+    navigate(`../details/${id}`)
+  }
 
-    </CardActions>
-  </Card>
-)
+  return (
+    <Card sx={style.card}>
+      <CardMedia image={imageUrl} component="img" sx={style.media} onClick={handleClickMedia}/>
+      
+      <CardContent sx={style.content}>  
+        <Typography>{name}</Typography>
+        <Typography variant="h5">${price}</Typography>
+      </CardContent>
+      
+      <CardActions sx={style.actions}>
+        <Button startIcon={<ShoppingCartIcon/>} color="info" variant="outlined" sx={style.button}>
+          buy
+        </Button>
+      </CardActions>
+    </Card>
+  )
+}
 
 const style = {
   card: {

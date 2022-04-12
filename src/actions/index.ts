@@ -1,6 +1,7 @@
-import { ACatalogue } from './catalogue';
+import { ACatalogue } from "./catalogue"
+import { AOrder } from "./order"
 
-export type AType = ACatalogue // | ...
+export type AType = ACatalogue | AOrder
 
 export {
   AItemsType,
@@ -13,3 +14,9 @@ export {
   itemsEdit
 } from "./catalogue"
 
+export {
+  AOrderType,
+  orderAdd,
+  orderRemove,
+  orderClear
+} from "./order"

@@ -1,14 +1,14 @@
-import { Reducer } from "redux"
+import { combineReducers, Reducer } from "redux"
 
-import { CatalogueState, RootState } from "./types"
+import { CatalogueState, OrderState, RootState } from "./types"
 import { updateCatalogue } from "./catalogue"
-import { initialRoot } from "./initial"
+import { updateOrder } from "./order"
 
 import { AType } from "../actions"
 
-export const reducer: Reducer<RootState, AType> = (state = initialRoot, action) => ({
-  catalogue: updateCatalogue(state.catalogue, action),
-  // to be continued
+export const reducer: Reducer<RootState, AType> = combineReducers({
+  catalogue: updateCatalogue,
+  order: updateOrder
 })
 
-export type { CatalogueState, RootState }
+export type { CatalogueState, OrderState, RootState }

@@ -1,4 +1,4 @@
-import { CatalogueState, RootState } from "./types"
+import { CatalogueState, OrderState } from "./types"
 
 import { SortType } from "../utils/sort"
 
@@ -9,7 +9,7 @@ export const initialCatalogue: CatalogueState = {
   sort: SortType.ALPHABETIC
 }
 
-export const initialRoot: RootState = {
-  catalogue: initialCatalogue
-  /// to be continued
+export const initialOrder: OrderState = {
+  items: [],
+  cost: 0
 }

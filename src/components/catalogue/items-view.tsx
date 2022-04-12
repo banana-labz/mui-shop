@@ -33,7 +33,7 @@ export const ItemsViewLogic = ({ items, loading, error, pattern, fetchItems }: I
   }
 
   if (error) {
-    navigate("/error")
+    navigate("../error")
   }
 
   return (

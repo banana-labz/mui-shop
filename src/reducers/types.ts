@@ -8,7 +8,12 @@ export interface CatalogueState {
   sort: SortType
 }
 
+export interface OrderState {
+  items: ProductData[],
+  cost: number
+}
+
 export interface RootState {
   catalogue: CatalogueState,  
-  // to be continued
+  order: OrderState
 }
