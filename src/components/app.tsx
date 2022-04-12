@@ -12,9 +12,12 @@ import { ErrorPage } from "../pages/error"
 import { DetailsPage } from "../pages/details"
 import { Order } from "./order"
 
+import { RemoveItemModal } from "./modals"
+import { Button } from "@mui/material"
+
 export const App = () => {
   const [isOrderOpen, setIsOrderOpen] = useState<boolean>(false)
-  
+  const [isRemoveModalOpen, setIsRemoveModalOpen] = useState<boolean>(false)
   return (
     <ThemeProvider>
       <Header openOrder={() => setIsOrderOpen(true)}/>
@@ -27,6 +30,8 @@ export const App = () => {
         </Routes>
       </Router>
       <Order isOpen={isOrderOpen} onClose={() => setIsOrderOpen(false)}/>
+      <RemoveItemModal isOpen={isRemoveModalOpen} onClose={() => setIsRemoveModalOpen(false)}/>
+      <Button onClick={() => setIsRemoveModalOpen(true)}>Open Remove modal</Button>
       <ToastContainer/>
     </ThemeProvider>
   )
