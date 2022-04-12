@@ -12,6 +12,8 @@ interface ThemeProviderProps {
   children: React.ReactNode
 }
 
+export type { Theme } from "./theme"
+
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const theme = createTheme({
     palette,

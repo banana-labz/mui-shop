@@ -7,10 +7,10 @@ import api from "../../services/shop-service"
 
 export { AFetchType } from "./fetch"
 export { AItemsType } from "./items"
-export type AList = AItems | AFetch
+export type ACatalogue = AItems | AFetch
 
 export { itemsSortChange, itemsAdd, itemsRemove, itemsEdit, itemsSort } from "./items"
-export const fetchItems = (dispatch: Dispatch<AList>) => {
+export const fetchItems = () => (dispatch: Dispatch<ACatalogue>) => {
   dispatch(itemsRequest())
   api.getAllItems()
     .then(data => {

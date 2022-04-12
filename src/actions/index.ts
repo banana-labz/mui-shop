@@ -1,6 +1,6 @@
-import type { AList } from "./list"
+import { ACatalogue } from './catalogue';
 
-export type AType = AList // | ...
+export type AType = ACatalogue // | ...
 
 export {
   AItemsType,
@@ -11,5 +11,5 @@ export {
   itemsAdd,
   itemsRemove,
   itemsEdit
-} from "./list"
+} from "./catalogue"
 

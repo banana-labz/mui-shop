@@ -1,12 +1,12 @@
 import { Reducer } from "redux"
 
-import { ListState } from "./types"
-import { initialList } from "./initial"
+import { CatalogueState } from "./types"
+import { initialCatalogue } from "./initial"
 
 import { SortOptions } from "../utils/sort"
 import { AItemsType, AFetchType, AType } from "../actions"
 
-export const updateList: Reducer<ListState, AType> = (state = initialList, action) => {
+export const updateCatalogue: Reducer<CatalogueState, AType> = (state = initialCatalogue, action) => {
   switch (action.type) {
     case AFetchType.FETCH_ITEMS_REQUEST: {
       return { ...state, items: [], loading: true, error: null }

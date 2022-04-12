@@ -1,7 +1,7 @@
-import type { ProductData } from "../types"
+import { ProductData } from "../types"
 import { SortType } from "../utils/sort"
 
-export interface ListState {
+export interface CatalogueState {
   items: ProductData[],
   loading: boolean,
   error: Error | null,
@@ -9,6 +9,6 @@ export interface ListState {
 }
 
 export interface RootState {
-  list: ListState,  
+  catalogue: CatalogueState,  
   // to be continued
 }

@@ -1,57 +1,65 @@
-import { Grid, Box, Button, Typography } from "@mui/material"
-import { Card, CardMedia, CardContent, CardActions } from "@mui/material"
+import { Button, Typography, Card, CardMedia, CardContent, CardActions } from "@mui/material"
 
-import DeleteIcon from "@mui/icons-material/Delete"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-import DescriptionIcon from "@mui/icons-material/Description"
 
 import { ProductData } from "../../types"
 
 export const Item = ({ imageUrl, name, price }: ProductData) => (
-  <Grid item xs={12} md={3}>
-    <Card sx={itemContainerStyle}>
-      <CardMedia image={imageUrl} component="img" sx={{ objectFit: "scale-down" }} width="256" height="256"/>
-      
-      <CardContent>
-        <Typography>{name}</Typography>
-        <Typography variant="h5">${price}</Typography>
-      </CardContent>
-      <CardActions sx={buttonContainerStyle}>
-        {/*<Button startIcon={<DeleteIcon/>} color="error" variant="outlined" sx={buttonStyle}>
-          delete
-        </Button>*/}
-        <Button startIcon={<ShoppingCartIcon/>} color="info" variant="outlined" sx={buttonStyle}>
-          buy
-        </Button>
-        {/*<Button startIcon={<DescriptionIcon/>} color="info" variant="outlined" sx={buttonStyle}>
-          details
-        </Button>*/}
-      </CardActions>
-    </Card>
-  </Grid>
+  <Card sx={style.card}>
+    <CardMedia image={imageUrl} component="img" sx={style.media}/>
+    <CardContent sx={style.content}>  
+      <Typography>{name}</Typography>
+      <Typography variant="h5">${price}</Typography>
+    </CardContent>
+    <CardActions sx={style.actions}>
+      <Button startIcon={<ShoppingCartIcon/>} color="info" variant="outlined" sx={style.button}>
+        buy
+      </Button>
+
+    </CardActions>
+  </Card>
 )
 
-const buttonStyle = {
-  background: "#FFF",
-  border: "1px solid"
+const style = {
+  card: {
+    display: "grid",
+    gridTemplateRows: "5fr 2fr 1fr",
+    gridGap: "0",
+    
+    height: "100%",
+  
+    boxShadow: "0px 2px 8px rgba(24, 85, 130, 0.1)",
+    padding: "10px",
+  },
+  media: {
+    justifySelf: "center",
+    objectFit: "scale-down",
+    height: "256px",
+    width: "256px",
+  },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    padding: "10px",
+  },
+  actions: {
+    padding: "10px"
+  },
+  button: {
+    background: "#FFF",
+    border: "1px solid"
+  }
 }
 
-const buttonContainerStyle = {
-  display: "flex",
-  // justifyContent: "center",
-  flexDirection: "row",
-  gap: "20px",
 
-  // marginTop: "20px"
-}
-const itemContainerStyle = {
-  display: "flex",
-  // justifyContent: "center",
-  flexDirection: "column",
-
-  height: "100%",
-
-  boxShadow: "0px 2px 8px rgba(24, 85, 130, 0.1)",
-  padding: "10px",
-  // textAlign: "center",
-}
+/*
+import DescriptionIcon from "@mui/icons-material/Description"
+import DeleteIcon from "@mui/icons-material/Delete"
+<Button startIcon={<DeleteIcon/>} color="error" variant="outlined" sx={style.button}>
+  delete
+</Button>
+<Button startIcon={<DescriptionIcon/>} color="info" variant="outlined" sx={style.button}>
+  details
+</Button>
+*/

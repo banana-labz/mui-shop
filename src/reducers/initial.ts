@@ -1,8 +1,8 @@
-import { ListState, RootState } from "./types"
+import { CatalogueState, RootState } from "./types"
 
 import { SortType } from "../utils/sort"
 
-export const initialList: ListState = {
+export const initialCatalogue: CatalogueState = {
   items: [],
   loading: true,
   error: null,
@@ -10,6 +10,6 @@ export const initialList: ListState = {
 }
 
 export const initialRoot: RootState = {
-  list: initialList
+  catalogue: initialCatalogue
   /// to be continued
 }
