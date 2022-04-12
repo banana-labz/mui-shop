@@ -1,15 +1,23 @@
+import { useState } from "react"
 import { Box } from "@mui/material"
 
 import { SortSelect} from "./sort-select"
 import { ItemsView } from "./items-view"
+import { Search } from "./search"
 
 export const Catalogue = () => {
+  const [searchPattern, setSearchPattern] = useState<string>("")
+
   return (
     <Box sx={style.catalogue}>
       <Box sx={style.options}>
+        <Search
+          pattern={searchPattern}
+          onChange={setSearchPattern}
+        />
         <SortSelect/>
       </Box>
-      <ItemsView/>
+      <ItemsView pattern={searchPattern}/>
     </Box>
   )
 }
@@ -21,12 +29,8 @@ const style = {
   options: {
     display: "flex",
     flexDirection: "row",
-    
     gap: "10px",
-    height: "30px",
-  
+
     marginBottom: "20px"
-  },
-  container: {
   }
 }
