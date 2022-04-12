@@ -1,10 +1,11 @@
+import React from "react"
 import { connect, ConnectedProps } from "react-redux"
 import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
-import { RootState } from "../reducers"
-import { orderRemove, orderClear } from "../actions"
+import { RootState } from "../../reducers"
+import { orderRemove, orderClear } from "../../actions"
 
 interface OrderProps extends InjectedProps {
   isOpen: boolean,
@@ -14,16 +15,14 @@ interface OrderProps extends InjectedProps {
 export const OrderLogic = ({ items, cost, orderRemove, orderClear, isOpen, onClose }: OrderProps) => {
   return (
     <Drawer anchor="right" open={isOpen} onClose={onClose}>
-      <List sx={{width: '400px'}}>
+      <List>
         <ListItem>
-            <ListItemIcon>
-                <ShoppingCartIcon/>
-            </ListItemIcon>
-            <ListItemText primary="Order"/>
+          <ShoppingCartIcon/>
+          <ListItemText primary="Order"/>
         </ListItem>
         <Divider/>{
           !items.length 
-            ? <ListItem>Empty</ListItem>
+            ? <ListItem>Your order is empty</ListItem>
             : (<>
                 {items.map(item => <Typography key={item.id}>{item.name}</Typography>)}
                 <Divider/>

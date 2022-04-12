@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react"
+import React, { ChangeEvent } from "react"
 import { TextField } from "@mui/material"
 
 interface SearchProps {
