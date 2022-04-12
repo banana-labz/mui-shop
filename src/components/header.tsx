@@ -3,7 +3,11 @@ import { AppBar, Badge, IconButton, Toolbar, Typography } from "@mui/material"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import LoginIcon from "@mui/icons-material/Login"
 
-export const Header = () => (
+interface HeaderProps {
+  openOrder: () => void
+}
+
+export const Header = ({ openOrder }: HeaderProps) => (
   <AppBar position="static">
     <Toolbar>
       <Typography component="span" sx={{ flexGrow: 1 }}>
@@ -12,7 +16,7 @@ export const Header = () => (
       <IconButton color="inherit">
         <LoginIcon/>
       </IconButton>
-      <IconButton color="inherit">
+      <IconButton color="inherit" onClick={() => openOrder()}>
         <Badge color="secondary" badgeContent={1}>
           <ShoppingCartIcon/>
         </Badge>

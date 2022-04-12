@@ -9,10 +9,6 @@ import { RootState } from "../../reducers"
 import { fetchItems } from "../../actions"
 import { ProductData } from "../../types"
 
-interface ItemsViewLogicExtendedProps extends ItemsViewLogicProps {
-  pattern: string
-}
-
 const filterByPattern = (items: ProductData[], pattern: string): ProductData[] => {
   const lcasePattern = pattern.toLowerCase()
   const copy = [...items]
@@ -21,7 +17,11 @@ const filterByPattern = (items: ProductData[], pattern: string): ProductData[] =
   ))
 }
 
-export const ItemsViewLogic = ({ items, loading, error, pattern, fetchItems }: ItemsViewLogicExtendedProps) => {  
+interface ItemsViewProps extends InjectedProps {
+  pattern: string
+}
+
+export const ItemsViewLogic = ({ items, loading, error, pattern, fetchItems }: ItemsViewProps) => {  
   const navigate = useNavigate()
   
   useEffect(() => {
@@ -52,6 +52,6 @@ const connector = connect(
   { fetchItems }
 )
 
-type ItemsViewLogicProps = ConnectedProps<typeof connector>
+type InjectedProps = ConnectedProps<typeof connector>
 
 export const ItemsView = connector(ItemsViewLogic)

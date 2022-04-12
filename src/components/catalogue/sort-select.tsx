@@ -6,7 +6,7 @@ import { RootState } from "../../reducers"
 import { itemsSort, itemsSortChange } from "../../actions"
 import { SortOptions } from "../../utils/sort"
 
-export const SortSelectLogic = ({ sort, itemsSort, itemsSortChange }: SortSelectLogicProps) => {
+export const SortSelectLogic = ({ sort, itemsSort, itemsSortChange }: InjectedProps) => {
   useEffect(() => {
     itemsSort(sort)
   }, [sort])
@@ -33,6 +33,6 @@ const connector = connect(
   { itemsSort, itemsSortChange }
 )
 
-type SortSelectLogicProps = ConnectedProps<typeof connector>
+type InjectedProps = ConnectedProps<typeof connector>
 
 export const SortSelect = connector(SortSelectLogic)

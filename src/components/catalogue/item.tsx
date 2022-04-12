@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router"
+import { useDispatch } from "react-redux"
 import { Button, Typography } from "@mui/material"
 import { Card, CardMedia, CardContent, CardActions } from "@mui/material"
 import { toast as notify } from "material-react-toastify"
@@ -5,13 +7,21 @@ import { toast as notify } from "material-react-toastify"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
 import { ProductData } from "../../types"
-import { useNavigate } from "react-router"
+import { orderAdd } from "../../actions"
 
-export const Item = ({ id, imageUrl, name, price }: ProductData) => {
+export const Item = (props: ProductData) => {
+  const { id, imageUrl, name, price } = props
+
   const navigate = useNavigate()
-  
+  const dispatch = useDispatch()
+
   const handleClickMedia = () => {
     navigate(`../details/${id}`)
+  }
+
+  const handleClickBuy = () => {
+    dispatch(orderAdd(props))
+    notify.success("Added to order")
   }
 
   return (
@@ -30,7 +40,7 @@ export const Item = ({ id, imageUrl, name, price }: ProductData) => {
           variant="outlined"
           sx={style.button}
           children="buy"
-          onClick={() => notify.success("Added to cart")}
+          onClick={handleClickBuy}
         />
       </CardActions>
     </Card>
