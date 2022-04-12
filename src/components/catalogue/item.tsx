@@ -1,4 +1,6 @@
-import { Button, Typography, Card, CardMedia, CardContent, CardActions } from "@mui/material"
+import { Button, Typography } from "@mui/material"
+import { Card, CardMedia, CardContent, CardActions } from "@mui/material"
+import { toast as notify } from "material-react-toastify"
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
@@ -22,9 +24,14 @@ export const Item = ({ id, imageUrl, name, price }: ProductData) => {
       </CardContent>
       
       <CardActions sx={style.actions}>
-        <Button startIcon={<ShoppingCartIcon/>} color="info" variant="outlined" sx={style.button}>
-          buy
-        </Button>
+        <Button 
+          startIcon={<ShoppingCartIcon/>}
+          color="info"
+          variant="outlined"
+          sx={style.button}
+          children="buy"
+          onClick={() => notify.success("Added to cart")}
+        />
       </CardActions>
     </Card>
   )

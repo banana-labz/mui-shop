@@ -1,9 +1,11 @@
+import "material-react-toastify/dist/ReactToastify.css"
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
+import { ToastContainer } from "material-react-toastify"
 
 import { Header } from "./header"
 
 import { ThemeProvider } from "../styles"
-
 import { CataloguePage } from "../pages/catalogue"
 import { ErrorPage } from "../pages/error"
 import { DetailsPage } from "../pages/details"
@@ -19,5 +21,6 @@ export const App = () => (
         <Route path="error" element={<ErrorPage/>}/>
       </Routes>
     </Router>
+    <ToastContainer/>
   </ThemeProvider>
 )
