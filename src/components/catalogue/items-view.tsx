@@ -26,14 +26,14 @@ export const ItemsViewLogic = ({ items, loading, error, pattern, fetchItems }: I
   
   useEffect(() => {
     fetchItems()
-  }, [fetchItems])
-
-  if (loading) {
-    return <CircularProgress/>
-  }
+  }, [])
 
   if (error) {
     navigate("../error")
+  }
+
+  if (loading) {
+    return <CircularProgress/>
   }
 
   return (

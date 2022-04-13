@@ -5,3 +5,8 @@ export interface ProductData {
   price: number,
   rating: number
 }
+
+export interface OrderData extends Omit<ProductData, "id"> {
+  orderId: string,
+  itemId: string
+}

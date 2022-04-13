@@ -1,4 +1,4 @@
-import { ProductData } from "../types"
+import { ProductData, OrderData } from "../types"
 import { SortType } from "../utils/sort"
 
 export interface CatalogueState {
@@ -9,7 +9,7 @@ export interface CatalogueState {
 }
 
 export interface OrderState {
-  items: ProductData[],
+  items: OrderData[],
   cost: number
 }
 

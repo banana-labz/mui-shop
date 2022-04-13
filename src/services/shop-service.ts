@@ -29,19 +29,18 @@ class ShopService {
 
   public getAllItems = async () => fetch(`${this.base}/products`)
     .then(response => response.json())
-    .then(response => response.map(this.transformProduct))
     .catch(this.handleError)
+    .then(response => response.map(this.transformProduct))
 
   public getItem = async (id: number) => fetch(`${this.base}/products/${id}`)
     .then(response => response.json())
-    .then(this.transformProduct)
     .catch(this.handleError)
+    .then(this.transformProduct)
 }
 
 const service = new ShopService()
 
 // TEST
-// service.getAllItems().then(console.log)
-// service.getItem(18).then(console.log)
+service.getAllItems().then(console.log); service.getItem(18).then(console.log)
 
 export default service

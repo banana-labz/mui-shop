@@ -1,6 +1,6 @@
 import { ActionCreator } from "redux"
 
-import { ProductData } from "../types"
+import { OrderData, ProductData } from "../types"
 
 export enum AOrderType {
   ORDER_ITEM_ADD = "ORDER_ITEM_ADD",
@@ -10,7 +10,7 @@ export enum AOrderType {
 
 interface AAdd {
   type: AOrderType.ORDER_ITEM_ADD,
-  payload: ProductData
+  payload: OrderData
 }
 
 interface ARemove {
@@ -24,9 +24,13 @@ interface AClear {
 
 export type AOrder = AAdd | ARemove | AClear
 
-export const orderAdd: ActionCreator<AAdd> = (data: ProductData) => ({
+export const orderAdd: ActionCreator<AAdd> = ({ id, imageUrl, name, price, rating }: ProductData) => ({
   type: AOrderType.ORDER_ITEM_ADD,
-  payload: data
+  payload: ({
+    itemId: id,
+    orderId: Math.random().toString(35).substring(2, 9),
+    imageUrl, name, price, rating
+  })
 })
 
 export const orderRemove: ActionCreator<ARemove> = (index: number) => ({

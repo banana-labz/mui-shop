@@ -22,7 +22,7 @@ export const Item = (props: ProductData) => {
 
   const handleClickBuy = () => {
     dispatch(orderAdd(props))
-    notify.success("Added to order")
+    notify.success(`Added "${name}" to order`)
   }
 
   return (

@@ -1,3 +1,4 @@
+import { ProductData, OrderData } from './../types';
 import { AOrderType } from './../actions/order';
 import { Reducer } from "redux"
 
@@ -5,6 +6,7 @@ import { OrderState } from "./types"
 import { initialOrder } from "./initial"
 
 import { AType } from "../actions"
+
 
 export const updateOrder: Reducer<OrderState, AType> = (state = initialOrder, action) => {
   switch (action.type) {

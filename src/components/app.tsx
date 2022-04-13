@@ -20,18 +20,18 @@ export const App = () => {
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState<boolean>(false)
   return (
     <ThemeProvider>
-      <Header openOrder={() => setIsOrderOpen(true)}/>
       <Router>
+        <Header openOrder={() => setIsOrderOpen(true)}/>
         <Routes>
           <Route path="/" element={<Navigate to="/catalogue"/>}/>
           <Route path="catalogue/*" element={<CataloguePage/>}/>
           <Route path="details/:id" element={<DetailsPage/>}/>
           <Route path="error" element={<ErrorPage/>}/>
         </Routes>
+        <Order isOpen={isOrderOpen} onClose={() => setIsOrderOpen(false)}/>
+        <RemoveItemModal isOpen={isRemoveModalOpen} onClose={() => setIsRemoveModalOpen(false)}/>
+        <Button onClick={() => setIsRemoveModalOpen(true)}>Open Remove modal</Button>
       </Router>
-      <Order isOpen={isOrderOpen} onClose={() => setIsOrderOpen(false)}/>
-      <RemoveItemModal isOpen={isRemoveModalOpen} onClose={() => setIsRemoveModalOpen(false)}/>
-      <Button onClick={() => setIsRemoveModalOpen(true)}>Open Remove modal</Button>
       <ToastContainer/>
     </ThemeProvider>
   )
