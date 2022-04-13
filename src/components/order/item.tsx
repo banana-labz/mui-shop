@@ -24,8 +24,8 @@ export const Item = ({ itemId, imageUrl, name, price, onRemove }: ItemProps) => 
   }
 
   return (
-    <ListItem sx={itemStyle}>
-      <Button variant="text" onClick={handleClickDetails}>
+    <ListItem sx={style.item}>
+      <Button variant="text" onClick={handleClickDetails} sx={style.button}>
         {name}
       </Button>
       <Typography variant="h5">
@@ -38,8 +38,16 @@ export const Item = ({ itemId, imageUrl, name, price, onRemove }: ItemProps) => 
   )
 }
 
-const itemStyle = {
-  display: "flex",
-  flexDirection: "row",
-  gap: "10px"
+const style = {
+  item: {
+    display: "grid",
+    gridTemplateColumns: "6fr 1fr 1fr",
+    gridGap: "10px",
+  },
+  button: {
+    variant: "text",
+    textTransform: "none",
+    justifyContent: "left",
+    textAlign: "left"
+  }
 }

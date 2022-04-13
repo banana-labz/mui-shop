@@ -1,5 +1,6 @@
 import React from "react"
-import { ListItem } from "@mui/material"
+import { TransitionGroup } from "react-transition-group"
+import { ListItem, Collapse } from "@mui/material"
 
 import { Item } from "./item"
 
@@ -16,14 +17,15 @@ export const ItemsView = ({ items, onRemove }: ItemsViewProps) => {
   }
 
   return (
-    <>{
+    <TransitionGroup>{
       items.map(item => (
-        <Item
-          key={item.orderId}
-          {...item}
-          onRemove={() => onRemove(item.orderId)}
-        />
+        <Collapse key={item.orderId}>
+          <Item
+            {...item}
+            onRemove={() => onRemove(item.orderId)}
+          />
+        </Collapse>
       ))
-    }</>
+    }</TransitionGroup>
   )
 }
