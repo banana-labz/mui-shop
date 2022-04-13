@@ -15,7 +15,7 @@ interface AAdd {
 
 interface ARemove {
   type: AOrderType.ORDER_ITEM_REMOVE,
-  payload: number
+  payload: string
 }
 
 interface AClear {
@@ -33,9 +33,9 @@ export const orderAdd: ActionCreator<AAdd> = ({ id, imageUrl, name, price, ratin
   })
 })
 
-export const orderRemove: ActionCreator<ARemove> = (index: number) => ({
+export const orderRemove: ActionCreator<ARemove> = (orderId: string) => ({
   type: AOrderType.ORDER_ITEM_REMOVE,
-  payload: index
+  payload: orderId
 })
 
 export const orderClear: ActionCreator<AClear> = () => ({

@@ -1,24 +1,30 @@
 import React from "react"
-import { useSelector } from "react-redux"
-import { AppBar, Badge, IconButton, Toolbar, Typography } from "@mui/material"
+import { AppBar, Badge, Button, IconButton, Toolbar, Typography } from "@mui/material"
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
 import { RootState, OrderState } from "../reducers"
+
+import { useOrder } from "../hooks"
+import { useNavigate } from "react-router"
+import { Box } from "@mui/system"
 
 interface HeaderProps {
   openOrder: () => void
 }
 
 export const Header = ({ openOrder }: HeaderProps) => {
-  const { items } = useSelector<RootState, OrderState>(state => state.order)
-  
+  const { items } = useOrder()
+  const navigate = useNavigate()
+  const handleClickLogo = () => {
+    navigate("/")
+  }
   return (
     <AppBar position="static">
-      <Toolbar>
-        <Typography component="span" sx={{ flexGrow: 1 }}>
+      <Toolbar sx={style.toolbar}>
+        <Button onClick={handleClickLogo} sx={style.logo}>
           MUI Shop
-        </Typography>
+        </Button>
         <IconButton color="inherit" onClick={() => openOrder()}>
           <Badge color="secondary" badgeContent={items.length}>
             <ShoppingCartIcon/>
@@ -27,6 +33,18 @@ export const Header = ({ openOrder }: HeaderProps) => {
       </Toolbar>
     </AppBar>
   )
+}
+
+const style = {
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  logo: {
+    color:"white",
+    cursor: "pointer"
+  }
 }
 
 /*

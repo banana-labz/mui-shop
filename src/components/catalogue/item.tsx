@@ -27,7 +27,12 @@ export const Item = (props: ProductData) => {
 
   return (
     <Card sx={style.card}>
-      <CardMedia image={imageUrl} component="img" sx={style.media} onClick={handleClickMedia}/>
+      <CardMedia
+        image={imageUrl}
+        component="img"
+        sx={style.media}
+        onClick={handleClickMedia}
+      />
       
       <CardContent sx={style.content}>  
         <Typography>{name}</Typography>

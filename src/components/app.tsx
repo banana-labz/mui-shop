@@ -18,6 +18,7 @@ import { Button } from "@mui/material"
 export const App = () => {
   const [isOrderOpen, setIsOrderOpen] = useState<boolean>(false)
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState<boolean>(false)
+
   return (
     <ThemeProvider>
       <Router>
@@ -30,7 +31,7 @@ export const App = () => {
         </Routes>
         <Order isOpen={isOrderOpen} onClose={() => setIsOrderOpen(false)}/>
         <RemoveItemModal isOpen={isRemoveModalOpen} onClose={() => setIsRemoveModalOpen(false)}/>
-        <Button onClick={() => setIsRemoveModalOpen(true)}>Open Remove modal</Button>
+        {/*<Button onClick={() => setIsRemoveModalOpen(true)}>Open Remove modal</Button>*/}
       </Router>
       <ToastContainer/>
     </ThemeProvider>

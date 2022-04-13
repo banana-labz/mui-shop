@@ -24,12 +24,22 @@ export const Item = ({ itemId, imageUrl, name, price, onRemove }: ItemProps) => 
   }
 
   return (
-    <ListItem>
-      <Typography onClick={handleClickDetails}>{name}</Typography>
-      <Typography variant="h5">${price}</Typography>
+    <ListItem sx={itemStyle}>
+      <Button variant="text" onClick={handleClickDetails}>
+        {name}
+      </Button>
+      <Typography variant="h5">
+        ${price}
+      </Typography>
       <IconButton color="error" onClick={handleClickRemove}>
         <DeleteIcon/>
       </IconButton>
     </ListItem>
   )
+}
+
+const itemStyle = {
+  display: "flex",
+  flexDirection: "row",
+  gap: "10px"
 }

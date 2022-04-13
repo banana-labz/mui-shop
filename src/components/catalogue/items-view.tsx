@@ -21,7 +21,7 @@ interface ItemsViewProps extends InjectedProps {
   pattern: string
 }
 
-export const ItemsViewLogic = ({ items, loading, error, pattern, fetchItems }: ItemsViewProps) => {  
+const ItemsViewLogic = ({ items, loading, error, pattern, fetchItems }: ItemsViewProps) => {  
   const navigate = useNavigate()
   
   useEffect(() => {

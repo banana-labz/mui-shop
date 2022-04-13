@@ -6,7 +6,7 @@ import { RootState } from "../../reducers"
 import { itemsSort, itemsSortChange } from "../../actions"
 import { SortOptions } from "../../utils/sort"
 
-export const SortSelectLogic = ({ sort, itemsSort, itemsSortChange }: InjectedProps) => {
+const SortSelectLogic = ({ sort, itemsSort, itemsSortChange }: InjectedProps) => {
   useEffect(() => {
     itemsSort(sort)
   }, [sort])
