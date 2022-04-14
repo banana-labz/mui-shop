@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
-import { RootState, CatalogueState } from "../reducers"
+import { CatalogueState } from "../reducers"
+import { RootState } from "../store"
 
 export const useCatalogue = () => (
   useSelector<RootState, CatalogueState>(state => state.catalogue)

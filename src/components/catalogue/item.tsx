@@ -19,7 +19,7 @@ export const Item = (props: ProductData) => {
   const handleClickMedia = () => {
     navigate(`../details/${id}`)
   }
-
+  
   const handleClickBuy = () => {
     addItem(props)
     notify.success(`Added "${name}" to order`)

@@ -21,8 +21,3 @@ export interface OrderState {
   items: OrderData[],
   cost: number
 }
-
-export interface RootState {
-  catalogue: CatalogueState,  
-  order: OrderState
-}
