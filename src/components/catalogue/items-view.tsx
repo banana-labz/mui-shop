@@ -7,9 +7,8 @@ import { Grid, CircularProgress, Box } from "@mui/material"
 
 import { Item } from "./item"
 
-import { RootState } from "../../reducers"
+import { ProductData } from "../../reducers"
 import { fetchItems } from "../../actions"
-import { ProductData } from "../../types"
 import { useCatalogue } from "../../hooks"
 
 const filterByPattern = (items: ProductData[], pattern: string): ProductData[] => {
@@ -27,8 +26,9 @@ interface ItemsViewProps {
 export const ItemsView = ({ pattern }: ItemsViewProps) => {
   const { items, loading, error } = useCatalogue()
   const fetchCatalogue = useActions(fetchItems)
+  
   const navigate = useNavigate()
-
+  console.log("CATALOGUE RENDERED")
   useEffect(() => {
     fetchCatalogue()
   }, [])

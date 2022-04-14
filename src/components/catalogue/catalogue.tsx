@@ -8,7 +8,6 @@ import { Search } from "./search"
 
 export const Catalogue = () => {
   const [searchPattern, setSearchPattern] = useState<string>("")
-
   return (
     <>
       <Box sx={optionsStyle}>

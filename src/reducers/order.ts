@@ -1,8 +1,7 @@
-import { OrderData } from "./../types"
 import { AOrderType } from "./../actions/order"
 import { Reducer } from "redux"
 
-import { OrderState } from "./types"
+import { OrderData, OrderState } from "./types"
 
 import { AType } from "../actions"
 

@@ -7,7 +7,6 @@ export {
   AItemsType,
   AFetchType,
   fetchItems,
-  itemsSortChange,
   itemsSort,
   itemsAdd,
   itemsRemove,

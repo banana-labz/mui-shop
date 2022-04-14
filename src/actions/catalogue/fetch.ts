@@ -1,6 +1,6 @@
 import { ActionCreator } from "redux"
 
-import { ProductData } from "../../types"
+import { ProductData } from "../../reducers"
 
 export enum AFetchType {
   FETCH_ITEMS_REQUEST = "FETCH_ITEMS_REQUEST",

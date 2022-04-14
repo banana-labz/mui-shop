@@ -5,7 +5,7 @@ import { toast as notify } from "material-react-toastify"
 
 import DeleteIcon from "@mui/icons-material/Delete"
 
-import { OrderData } from "../../types"
+import { OrderData } from "../../reducers"
 
 interface ItemProps extends OrderData {
   onRemove: () => void

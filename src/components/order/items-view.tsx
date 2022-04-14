@@ -4,7 +4,7 @@ import { ListItem, Collapse } from "@mui/material"
 
 import { Item } from "./item"
 
-import { OrderData } from "../../types"
+import { OrderData } from "../../reducers"
 
 interface ItemsViewProps {
   items: OrderData[],

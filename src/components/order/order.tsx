@@ -23,6 +23,8 @@ export const Order = ({ isOpen, onClose }: OrderProps) => {
   const onClear = useActions(orderClear)
   const onRemove = useActions(orderRemove)
 
+  console.log("ORDER RENDERED")
+
   return (
     <Drawer anchor="right" open={isOpen} onClose={onClose}>
       <List sx={{ width: "400px" }}>

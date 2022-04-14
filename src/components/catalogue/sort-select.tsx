@@ -1,28 +1,26 @@
 import React from "react"
 
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useActions } from "react-redux-actions-hook"
 import { Select, SelectChangeEvent, MenuItem } from "@mui/material"
 
-import { itemsSort, itemsSortChange } from "../../actions"
-import { SortOptions } from "../../utils/sort"
-import { useCatalogue } from "../../hooks"
+import { itemsSort } from "../../actions"
+import { SortOptions, SortType } from "../../utils/sort"
 
 export const SortSelect = () => {
-  const { sort } = useCatalogue()
+  const [sortType, setSortType] = useState<string>(SortType.ALPHABETIC as string)
   const sortCatalogue = useActions(itemsSort)
-  const changeSortType = useActions(itemsSortChange)
 
   useEffect(() => {
-    sortCatalogue(sort)
-  }, [sort])
+    sortCatalogue(sortType)
+  }, [sortType])
 
   const handleChangeSort = (event: SelectChangeEvent) => {
-    changeSortType(event.target.value)
+    setSortType(event.target.value)
   }
 
   return (
-    <Select value={sort} onChange={handleChangeSort}>{
+    <Select value={sortType} onChange={handleChangeSort}>{
       Object.keys(SortOptions).map((key, i) =>
         <MenuItem
           key={i}

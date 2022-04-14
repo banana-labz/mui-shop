@@ -8,28 +8,24 @@ import { AItemsType, AFetchType, AType } from "../actions"
 const initialCatalogue: CatalogueState = {
   items: [],
   loading: true,
-  error: null,
-  sort: SortType.ALPHABETIC
+  error: null
 }
 
 export const updateCatalogue: Reducer<CatalogueState, AType> = (state = initialCatalogue, action) => {
   switch (action.type) {
     case AFetchType.FETCH_ITEMS_REQUEST: {
-      return { ...state, items: [], loading: true, error: null }
+      return { items: [], loading: true, error: null }
     }
     case AFetchType.FETCH_ITEMS_SUCCESS: {
-      return { ...state, items: action.payload, loading: false, error: null }
+      return { items: action.payload, loading: false, error: null }
     }
     case AFetchType.FETCH_ITEMS_FAILURE: {
-      return { ...state, items: [], loading: false, error: action.payload }
-    }
-    case AItemsType.ITEMS_SORT_CHANGE: {
-      return { ...state, sort: action.payload }
+      return { items: [], loading: false, error: action.payload }
     }
     case AItemsType.ITEMS_SORT: {
-      const { sort: method } = state
-      if (method in SortOptions) {
-        const sorted = [...state.items].sort(SortOptions[method])   
+      const { payload } = action
+      if (payload in SortOptions) {
+        const sorted = [...state.items].sort(SortOptions[payload])
         return { ...state, items: sorted }
       }
       else {

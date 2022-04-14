@@ -6,7 +6,7 @@ import { toast as notify } from "material-react-toastify"
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
-import { ProductData } from "../../types"
+import { ProductData } from "../../reducers"
 import { orderAdd } from "../../actions"
 import { useActions } from "react-redux-actions-hook"
 

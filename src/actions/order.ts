@@ -1,6 +1,6 @@
 import { ActionCreator } from "redux"
 
-import { OrderData, ProductData } from "../types"
+import { OrderData, ProductData } from "../reducers"
 
 export enum AOrderType {
   ORDER_ITEM_ADD = "ORDER_ITEM_ADD",

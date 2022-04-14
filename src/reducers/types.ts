@@ -1,11 +1,20 @@
-import { ProductData, OrderData } from "../types"
-import { SortType } from "../utils/sort"
+export interface ProductData {
+  id: string,
+  imageUrl: string,
+  name: string,
+  price: number,
+  rating: number
+}
+
+export interface OrderData extends Omit<ProductData, "id"> {
+  orderId: string,
+  itemId: string
+}
 
 export interface CatalogueState {
   items: ProductData[],
   loading: boolean,
-  error: Error | null,
-  sort: SortType
+  error: Error | null
 }
 
 export interface OrderState {

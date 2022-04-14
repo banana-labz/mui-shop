@@ -1,4 +1,4 @@
-import type { ProductData } from "../types"
+import type { ProductData } from "../reducers"
 
 export enum SortType {
   ALPHABETIC = "By name",

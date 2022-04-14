@@ -1,23 +1,18 @@
 import { ActionCreator } from "redux"
 
-import { ProductData } from "../../types"
+import { ProductData } from "../../reducers"
 import { SortType } from "../../utils/sort"
 
 export enum AItemsType {
   ITEMS_SORT = "ITEMS_SORT",
-  ITEMS_SORT_CHANGE = "ITEMS_SORT_CHANGE",
   ITEMS_ADD = "ITEMS_ADD",
   ITEMS_REMOVE = "ITEMS_REMOVE",
   ITEMS_EDIT = "ITEMS_EDIT"
 }
 
-interface AItemsSortChange {
-  type: AItemsType.ITEMS_SORT_CHANGE,
-  payload: SortType
-}
-
 interface AItemsSort {
-  type: AItemsType.ITEMS_SORT
+  type: AItemsType.ITEMS_SORT,
+  payload: SortType
 }
 
 interface AItemsAdd {
@@ -38,16 +33,11 @@ interface AItemsEdit {
   }
 }
 
-export type AItems = AItemsSortChange | AItemsSort | AItemsAdd | AItemsRemove | AItemsEdit
+export type AItems = AItemsSort | AItemsAdd | AItemsRemove | AItemsEdit
 
-
-export const itemsSortChange: ActionCreator<AItemsSortChange> = (sortType: SortType) => ({
-  type: AItemsType.ITEMS_SORT_CHANGE,
-  payload: sortType
-})
-
-export const itemsSort: ActionCreator<AItemsSort> = () => ({
-  type: AItemsType.ITEMS_SORT
+export const itemsSort: ActionCreator<AItemsSort> = (method: SortType) => ({
+  type: AItemsType.ITEMS_SORT,
+  payload: method
 })
 
 export const itemsAdd: ActionCreator<AItemsAdd> = item => ({
