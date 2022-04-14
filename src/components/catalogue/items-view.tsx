@@ -26,9 +26,10 @@ interface ItemsViewProps {
 export const ItemsView = ({ pattern }: ItemsViewProps) => {
   const { items, loading, error } = useCatalogue()
   const fetchCatalogue = useActions(fetchItems)
-  
   const navigate = useNavigate()
-  console.log("CATALOGUE RENDERED")
+
+  console.log("RENDERED CATALOGUE")
+
   useEffect(() => {
     fetchCatalogue()
   }, [])

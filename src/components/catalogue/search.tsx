@@ -11,6 +11,7 @@ export const Search = ({ pattern, onChange }: SearchProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value)
   }
+  
   return (
     <TextField
       label="search"
