@@ -1,13 +1,16 @@
-import React, { useEffect } from "react"
+import React from "react"
+
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { connect, ConnectedProps } from "react-redux"
-import { Grid, CircularProgress } from "@mui/material"
+import { useActions } from "react-redux-actions-hook"
+import { Grid, CircularProgress, Box } from "@mui/material"
 
 import { Item } from "./item"
 
 import { RootState } from "../../reducers"
 import { fetchItems } from "../../actions"
 import { ProductData } from "../../types"
+import { useCatalogue } from "../../hooks"
 
 const filterByPattern = (items: ProductData[], pattern: string): ProductData[] => {
   const lcasePattern = pattern.toLowerCase()
@@ -17,23 +20,34 @@ const filterByPattern = (items: ProductData[], pattern: string): ProductData[] =
   ))
 }
 
-interface ItemsViewProps extends InjectedProps {
+interface ItemsViewProps {
   pattern: string
 }
 
-const ItemsViewLogic = ({ items, loading, error, pattern, fetchItems }: ItemsViewProps) => {  
+export const ItemsView = ({ pattern }: ItemsViewProps) => {
+  const { items, loading, error } = useCatalogue()
+  const fetchCatalogue = useActions(fetchItems)
   const navigate = useNavigate()
-  
-  useEffect(() => {
-    fetchItems()
-  }, [])
 
+  useEffect(() => {
+    fetchCatalogue()
+  }, [])
+  
   if (error) {
     navigate("../error")
   }
 
   if (loading) {
-    return <CircularProgress/>
+    return (
+      <Box sx={{
+        height: "calc(100% - 56px)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }}>
+        <CircularProgress/>
+      </Box>
+    )
   }
 
   return (
@@ -46,12 +60,3 @@ const ItemsViewLogic = ({ items, loading, error, pattern, fetchItems }: ItemsVie
     }</Grid>
   )
 }
-
-const connector = connect(
-  ({ catalogue: { items, loading, error } }: RootState) => ({ items, loading, error }),
-  { fetchItems }
-)
-
-type InjectedProps = ConnectedProps<typeof connector>
-
-export const ItemsView = connector(ItemsViewLogic)

@@ -1,18 +1,24 @@
-import React, { useEffect } from "react"
-import { connect, ConnectedProps } from "react-redux"
+import React from "react"
+
+import { useEffect } from "react"
+import { useActions } from "react-redux-actions-hook"
 import { Select, SelectChangeEvent, MenuItem } from "@mui/material"
 
-import { RootState } from "../../reducers"
 import { itemsSort, itemsSortChange } from "../../actions"
 import { SortOptions } from "../../utils/sort"
+import { useCatalogue } from "../../hooks"
 
-const SortSelectLogic = ({ sort, itemsSort, itemsSortChange }: InjectedProps) => {
+export const SortSelect = () => {
+  const { sort } = useCatalogue()
+  const sortCatalogue = useActions(itemsSort)
+  const changeSortType = useActions(itemsSortChange)
+
   useEffect(() => {
-    itemsSort(sort)
+    sortCatalogue(sort)
   }, [sort])
 
   const handleChangeSort = (event: SelectChangeEvent) => {
-    itemsSortChange(event.target.value)
+    changeSortType(event.target.value)
   }
 
   return (
@@ -27,12 +33,3 @@ const SortSelectLogic = ({ sort, itemsSort, itemsSortChange }: InjectedProps) =>
     }</Select>
   )
 }
-
-const connector = connect(
-  ({ catalogue: { sort } }: RootState) => ({ sort }),
-  { itemsSort, itemsSortChange }
-)
-
-type InjectedProps = ConnectedProps<typeof connector>
-
-export const SortSelect = connector(SortSelectLogic)

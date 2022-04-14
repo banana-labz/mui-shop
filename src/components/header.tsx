@@ -1,13 +1,11 @@
 import React from "react"
-import { AppBar, Badge, Button, IconButton, Toolbar, Typography } from "@mui/material"
+import { AppBar, Badge, Button, IconButton, Toolbar } from "@mui/material"
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
-import { RootState, OrderState } from "../reducers"
 
 import { useOrder } from "../hooks"
 import { useNavigate } from "react-router"
-import { Box } from "@mui/system"
 
 interface HeaderProps {
   openOrder: () => void

@@ -1,6 +1,5 @@
 import React from "react"
 import { useNavigate } from "react-router"
-import { useDispatch } from "react-redux"
 import { Button, Typography } from "@mui/material"
 import { Card, CardMedia, CardContent, CardActions } from "@mui/material"
 import { toast as notify } from "material-react-toastify"
@@ -9,19 +8,20 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
 import { ProductData } from "../../types"
 import { orderAdd } from "../../actions"
+import { useActions } from "react-redux-actions-hook"
 
 export const Item = (props: ProductData) => {
   const { id, imageUrl, name, price } = props
 
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const addItem = useActions(orderAdd)
 
   const handleClickMedia = () => {
     navigate(`../details/${id}`)
   }
 
   const handleClickBuy = () => {
-    dispatch(orderAdd(props))
+    addItem(props)
     notify.success(`Added "${name}" to order`)
   }
 

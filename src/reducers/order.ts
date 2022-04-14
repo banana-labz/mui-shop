@@ -1,11 +1,15 @@
-import { ProductData, OrderData } from './../types';
-import { AOrderType } from './../actions/order';
+import { OrderData } from "./../types"
+import { AOrderType } from "./../actions/order"
 import { Reducer } from "redux"
 
 import { OrderState } from "./types"
-import { initialOrder } from "./initial"
 
 import { AType } from "../actions"
+
+const initialOrder: OrderState = {
+  items: [],
+  cost: 0
+}
 
 const countCost = (items: OrderData[]): number => items.reduce((price, item) => price + item.price, 0)
 

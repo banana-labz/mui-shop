@@ -1,10 +1,16 @@
 import { Reducer } from "redux"
 
 import { CatalogueState } from "./types"
-import { initialCatalogue } from "./initial"
 
-import { SortOptions } from "../utils/sort"
+import { SortOptions, SortType } from "../utils/sort"
 import { AItemsType, AFetchType, AType } from "../actions"
+
+const initialCatalogue: CatalogueState = {
+  items: [],
+  loading: true,
+  error: null,
+  sort: SortType.ALPHABETIC
+}
 
 export const updateCatalogue: Reducer<CatalogueState, AType> = (state = initialCatalogue, action) => {
   switch (action.type) {
@@ -34,8 +40,8 @@ export const updateCatalogue: Reducer<CatalogueState, AType> = (state = initialC
       return { ...state, items: [...state.items, action.payload] }
     }
     case AItemsType.ITEMS_REMOVE: { 
-      const { payload: id } = action
-      const result = state.items.filter(v => v.id !== id)
+      const { payload } = action
+      const result = state.items.filter(item => item.id !== payload)
       return { ...state, items: result }
     }
     case AItemsType.ITEMS_EDIT: {

@@ -1,4 +1,4 @@
-import { ProductData } from '../types'
+import { ProductData } from "../types"
 
 // using fakestoreapi.com
 
@@ -41,6 +41,8 @@ class ShopService {
 const service = new ShopService()
 
 // TEST
-service.getAllItems().then(console.log); service.getItem(18).then(console.log)
-
+/*
+service.getAllItems().then(console.log)
+service.getItem(18).then(console.log)
+*/
 export default service

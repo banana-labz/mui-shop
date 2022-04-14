@@ -1,4 +1,4 @@
-import { Modal, Box, Typography } from "@mui/material";
+import { Modal, Box, Typography } from "@mui/material"
 
 interface RemoveItemModalProps {
   isOpen: boolean,
