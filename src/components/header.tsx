@@ -1,11 +1,12 @@
 import React from "react"
+
+import { useNavigate } from "react-router"
 import { AppBar, Badge, Button, IconButton, Toolbar } from "@mui/material"
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
 
 import { useOrder } from "../hooks"
-import { useNavigate } from "react-router"
 
 interface HeaderProps {
   openOrder: () => void
@@ -17,6 +18,7 @@ export const Header = ({ openOrder }: HeaderProps) => {
   const handleClickLogo = () => {
     navigate("/")
   }
+
   return (
     <AppBar position="static">
       <Toolbar sx={style.toolbar}>
@@ -44,10 +46,3 @@ const style = {
     cursor: "pointer"
   }
 }
-
-/*
-  import LoginIcon from "@mui/icons-material/Login"
-  <IconButton color="inherit">
-  <LoginIcon/>
-  </IconButton>
-*/

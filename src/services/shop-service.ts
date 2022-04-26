@@ -32,7 +32,7 @@ class ShopService {
     .catch(this.handleError)
     .then(response => response.map(this.transformProduct))
 
-  public getItem = async (id: number) => fetch(`${this.base}/products/${id}`)
+  public getItem = async (id: string) => fetch(`${this.base}/products/${id}`)
     .then(response => response.json())
     .catch(this.handleError)
     .then(this.transformProduct)

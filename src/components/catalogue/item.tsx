@@ -1,14 +1,16 @@
 import React from "react"
+
 import { useNavigate } from "react-router"
+import { useActions } from "react-redux-actions-hook"
+import { toast as notify } from "material-react-toastify"
 import { Button, Typography } from "@mui/material"
 import { Card, CardMedia, CardContent, CardActions } from "@mui/material"
-import { toast as notify } from "material-react-toastify"
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
 import { ProductData } from "../../reducers"
 import { orderAdd } from "../../actions"
-import { useActions } from "react-redux-actions-hook"
+
 
 export const Item = (props: ProductData) => {
   const { id, imageUrl, name, price } = props
@@ -21,6 +23,7 @@ export const Item = (props: ProductData) => {
   }
   
   const handleClickBuy = () => {
+    // not the best solution but i don't want to rewrite it
     addItem(props)
     notify.success(`Added "${name}" to order`)
   }
@@ -84,15 +87,3 @@ const style = {
     border: "1px solid"
   }
 }
-
-
-/*
-import DescriptionIcon from "@mui/icons-material/Description"
-import DeleteIcon from "@mui/icons-material/Delete"
-<Button startIcon={<DeleteIcon/>} color="error" variant="outlined" sx={style.button}>
-  delete
-</Button>
-<Button startIcon={<DescriptionIcon/>} color="info" variant="outlined" sx={style.button}>
-  details
-</Button>
-*/

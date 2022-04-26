@@ -1,11 +1,11 @@
 import React from "react"
-import { useParams } from "react-router"
+
+import { Navigate, useParams } from "react-router"
+
+import { ProductDetails } from "../components/product-details"
 
 export const DetailsPage = () => {
   const { id } = useParams()
-  return (
-    <>
-      {id}
-    </>
-  )
+
+  return id ? <ProductDetails id={id}/> : <Navigate to="/"/>
 }
